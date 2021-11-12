@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
+ENV['RAILS_ENV'] = 'test'
+require_relative '../spec/dummy/config/environment'
+ENV['RAILS_ROOT'] ||= "#{File.dirname(__FILE__)}../../../spec/dummy"
+
 require "graphql/log_helper"
+require 'rspec/rails'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

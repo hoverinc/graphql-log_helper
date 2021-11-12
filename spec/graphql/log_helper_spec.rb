@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Graphql::LogHelper do
+RSpec.describe Graphql::LogHelper, type: :request do
   it "has a version number" do
     expect(Graphql::LogHelper::VERSION).not_to be nil
   end
