@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "graphql"
 
+  spec.add_development_dependency "lograge"
   spec.add_development_dependency "rails"
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "sqlite3"
