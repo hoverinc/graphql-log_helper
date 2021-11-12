@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "graphql"
 require_relative "log_helper/version"
 
 module Graphql
@@ -17,7 +18,7 @@ module Graphql
           end
 
         {
-          params: query_params,
+          params: to_deep_a(query_params),
           resolvers: resolver_names(selections)
         }
       end
@@ -28,7 +29,7 @@ module Graphql
         selections.map do |selection|
           [
             selection.name,
-            variables.deep_to_a
+            to_deep_a(variables)
           ]
         end
       end
@@ -60,6 +61,10 @@ module Graphql
         GraphQL.parse(query)
       rescue GraphQL::ParseError
         nil
+      end
+
+      def to_deep_a(hash)
+        hash.map { |key, value| [key, value.is_a?(Hash) ? to_deep_a(value) : value] }
       end
     end
   end
